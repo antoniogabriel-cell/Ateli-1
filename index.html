@@ -69,7 +69,11 @@
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
-  
+  <script>
+document.querySelector('a-marker').addEventListener('markerFound', function () {
+    document.querySelector('[sound]').components.sound.playSound();
+});
+</script>
   </body>
  
 </html>
