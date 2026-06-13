@@ -64,15 +64,28 @@
       <a-marker type="pattern" url="pattern-csc1.patt">
        <a-image src="ceara14.jpg" position="0 0.5 0" rotation="-90 0 0" width="1.6" height="1"></a-image>
          <a-entity
+           id="som"
         sound="src: #hino; autoplay: false; loop: true">
     </a-entity>
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
-  <script>
-document.querySelector('a-marker').addEventListener('markerFound', function () {
-    document.querySelector('[sound]').components.sound.playSound();
-});
+<script>
+window.onload = function () {
+
+    const marker = document.querySelector("a-marker");
+    const som = document.querySelector("#som");
+
+    marker.addEventListener("markerFound", function () {
+        console.log("Marcador encontrado");
+        som.components.sound.playSound();
+    });
+
+    marker.addEventListener("markerLost", function () {
+        som.components.sound.stopSound();
+    });
+
+};
 </script>
   </body>
  
